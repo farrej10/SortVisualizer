@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+body{
+  font: 600 1rem 'Montserrat', sans-serif;
+}
+h1{
+  text-align: center;
+}
+p{
+  text-align: center;
+}
+canvas {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 800px;
+  height: 600px;
+  border:1px solid #000000;
+}
+
+button {
+  background: rgb(0, 0, 0);
+  border: 0.125em solid rgb(0, 0, 0);
+  color: white;
+  cursor: pointer;
+  font: 600 1.5rem/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.125em;
+  padding: 12px 20px;
+  margin: 2vh auto;
+  text-transform: uppercase;
+  max-width: 50vw;
+  height: fit-content;
+  
+}
+
+button:hover {
+  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  background: #e5e5e5;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+          box-shadow: inset 0px 0px 5px #c1c1c1;
+   outline: none;
+}
