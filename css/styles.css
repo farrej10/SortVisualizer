@@ -32,6 +32,7 @@ button {
   
 }
 
+
 button:hover {
   opacity: 0.8;
   background: rgba(0, 0, 0, 0.2);
@@ -43,4 +44,19 @@ button:active {
      -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
           box-shadow: inset 0px 0px 5px #c1c1c1;
    outline: none;
+}
+
+select {
+  background: rgb(0, 0, 0);
+  border: 0.125em solid rgb(0, 0, 0);
+  color: white;
+  cursor: pointer;
+  font: 600 1.5rem/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.125em;
+  padding: 12px 20px;
+  margin: 2vh 1vh;
+  text-transform: uppercase;
+  max-width: 50vw;
+  height: fit-content;
+  
 }

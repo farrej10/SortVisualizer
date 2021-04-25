@@ -130,7 +130,7 @@ class Graph {
 
 
                 this.bars[j].color = red
-                this.bars[j+1].color = red
+                this.bars[j + 1].color = red
 
 
 
@@ -138,7 +138,7 @@ class Graph {
                 await wait(this.delta)
 
                 this.bars[j].color = black
-                this.bars[j+1].color = black
+                this.bars[j + 1].color = black
 
                 if (this.bars[j].height > this.bars[j + 1].height) {
                     let tmp = this.bars[j].height;
@@ -148,7 +148,7 @@ class Graph {
                 }
             }
 
-            this.bars[n-i-1].color = green
+            this.bars[n - i - 1].color = green
             if (!swapped) {
                 break;
             }
@@ -177,9 +177,14 @@ document.getElementById("shuffle").onclick = function () {
 
 // };
 document.getElementById("sort").onclick = async function () {
+
+    let e = document.getElementById("algo");
     if (!graph.isSorted()) {
-        await graph.bubbleSort();
-        graph.draw();
+        if (e.value == "Bubble")
+            await graph.bubbleSort();
+        else if (e.value == "Selection")
+            await graph.selectionSort();
     }
+    graph.draw();
 
 };
