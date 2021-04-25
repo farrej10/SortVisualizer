@@ -10,14 +10,23 @@
 
 <body>
     <h1>Sort Algorithms</h1>
-    <canvas id="myCanvas" width=815 height=300></canvas>
+    <p>Select a sorting algorithm from this dropdown below</p>
     <div style="text-align: center;">
-        <button id="shuffle">shuffle</button>
         <select id="algo">
             <option value="Selection">Selection Sort</option>
             <option value="Bubble">Bubble Sort</option>
-          </select>
+        </select>
+    </div>
+    <canvas id="myCanvas" width=815 height=300></canvas>
+    <div style="text-align: center;">
+        <button id="shuffle">shuffle</button>
+
         <button id="sort">sort</button>
+    </div>
+    <div class="parent">
+        <p>Slower</p>
+        <input type="range" min="1" max="100" value="75" class="slider" id="myRange">
+        <p>Faster</p>
     </div>
     <script src="js/bars.js"></script>
 </body>

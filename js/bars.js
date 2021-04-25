@@ -160,25 +160,27 @@ class Graph {
 
 
 
-
-graph = new Graph(ctx, 54, 5)
+let slider = document.getElementById("myRange");
+graph = new Graph(ctx, 54, 99 - slider.value)
 graph.shuffle()
 graph.draw()
 
 document.getElementById("shuffle").onclick = function () {
-    graph = new Graph(ctx, 54, 5)
+    slider = document.getElementById("myRange");
+    graph = new Graph(ctx, 54, 99 - slider.value)
     graph.shuffle()
     graph.draw()
 };
-// document.getElementById("sort").onclick = async function () {
-//     if (!graph.isSorted()) {
-//         await graph.selectionSort();
-//     }
 
-// };
+slider.oninput = function () {
+    graph.delta = 99 - slider.value
+}
+
 document.getElementById("sort").onclick = async function () {
 
     let e = document.getElementById("algo");
+    slider = document.getElementById("myRange");
+    graph.delta = 99 - slider.value
     if (!graph.isSorted()) {
         if (e.value == "Bubble")
             await graph.bubbleSort();
