@@ -156,6 +156,22 @@ class Graph {
         this.bars[0].color = green
         this.draw();
     }
+    async mergeSort() {
+        let l = 0
+        let r = this.bars.length - 1
+        let middle = Math.floor(r-1/2)
+        await this.mergesplit(l,r)
+    }
+    async mergesplit(left,right){
+
+        let middle= 1+Math.floor(right-1/2);
+        this.mergesplit(left,middle);
+        this.mergesplit(middle+1,right);
+        this.merge(left,middle,right);
+    }
+    async merge(){
+
+    }
 }
 
 
