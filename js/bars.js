@@ -36,7 +36,7 @@ class Bar {
 class Graph {
     constructor(ctx, numberofNodes, delta) {
         this.bars = []
-        var offset = 5
+        let offset = 5
         this.delta = delta
         for (var i = 0; i < numberofNodes; i++) {
             this.bars.push(new Bar(ctx, offset + i * 10, 0, 10, 20 + i * 5, black))
@@ -157,20 +157,83 @@ class Graph {
         this.draw();
     }
     async mergeSort() {
-        let l = 0
-        let r = this.bars.length - 1
-        let middle = Math.floor(r-1/2)
-        await this.mergesplit(l,r)
+        console.log(this.bars)
+        this.bars = await this.mergesplit(this.bars)
+        console.log(this.bars)
     }
-    async mergesplit(left,right){
+    async mergesplit(array) {
+        if (array.length < 2) return array
+        const middle = Math.floor(array.length / 2)
+        const leftArr = array.slice(0, middle)
+        const rightArr = array.slice(middle, array.length)
+        const sorted_l = await this.mergesplit(leftArr)
+        const sorted_r = await this.mergesplit(rightArr)
+        return await this.merge(sorted_l, sorted_r)
 
-        let middle= 1+Math.floor(right-1/2);
-        this.mergesplit(left,middle);
-        this.mergesplit(middle+1,right);
-        this.merge(left,middle,right);
     }
-    async merge(){
+    async merge(leftArr, rightArr) {
 
+        const c = []
+
+        // while (leftArr.length && rightArr.length) {
+        //     c.push(leftArr[0].height > rightArr[0].height ? rightArr.shift() : leftArr.shift())
+        // }
+        while (leftArr.length && rightArr.length) {
+
+            // leftArr[0].color = red
+            // rightArr[0].color = red
+
+
+
+            // this.draw()
+            // await wait(this.delta)
+
+            // leftArr[0].color = black
+            // rightArr[0].color = black
+
+            if (leftArr[0].height > rightArr[0].height) {
+
+                let tmp = rightArr.shift()
+                tmp.x = c.length * 15 + 5
+                c.push(tmp)
+            }
+            else {
+                let tmp = leftArr.shift()
+                tmp.x = c.length * 15 + 5
+                c.push(tmp)
+            }
+
+        }
+
+
+        //if we still have values, let's add them at the end of `c`
+        while (leftArr.length) {
+
+            // leftArr[0].color = red
+
+            // this.draw()
+            // await wait(this.delta)
+
+            // leftArr[0].color = black
+
+            let tmp = leftArr.shift()
+            tmp.x = c.length * 15 + 5
+            c.push(tmp)
+        }
+        while (rightArr.length) {
+
+            // rightArr[0].color = red
+
+            // this.draw()
+            // await wait(this.delta)
+
+            // rightArr[0].color = black
+
+            let tmp = rightArr.shift()
+            tmp.x = c.length * 15 + 5
+            c.push(tmp)
+        }
+        return c
     }
 }
 
@@ -198,10 +261,18 @@ document.getElementById("sort").onclick = async function () {
     slider = document.getElementById("myRange");
     graph.delta = 99 - slider.value
     if (!graph.isSorted()) {
+
         if (e.value == "Bubble")
             await graph.bubbleSort();
-        else if (e.value == "Selection")
+
+        if (e.value == "Selection")
             await graph.selectionSort();
+
+        if (e.value == "Merge")
+            await graph.mergeSort();
+
+
+
     }
     graph.draw();
 
